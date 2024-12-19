@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detecção de Câmera</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            padding: 20px;
+        }
+
+        #video-container {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #video {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detecção de Câmera</h1>
+    
+    <button id="toggle-camera-btn">Iniciar Câmera</button>
+    
+    <div id="video-container">
+        <img id="video" src="{{ url_for('video_feed') }}" />
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-camera-btn');
+        let cameraRunning = false;
+
+        toggleButton.addEventListener('click', function() {
+            if (cameraRunning) {
+                toggleButton.textContent = 'Iniciar Câmera';
+                cameraRunning = false;
+            } else {
+                toggleButton.textContent = 'Parar Câmera';
+                cameraRunning = true;
+            }
+        });
+    </script>
+</body>
+</html>
